@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+  <Template>FPGA</Template>
+  <Version>5</Version>
+  <Device name="GW5A-25B" pn="GW5A-LV25UG324C2/I1">gw5a25b-007</Device>
+  <FileList>
+    <File path="src/vision_follow.v" type="file.verilog" enable="1" />
+    <File path="src/vision_uart.v" type="file.verilog" enable="1" />
+    <File path="src/qr_task_runner.v" type="file.verilog" enable="1" />
+    <File path="src/nav_sequence_uart.v" type="file.verilog" enable="1" />
+    <File path="src/video/hdmi_clock_startup.v" type="file.verilog" enable="1" />
+    <File path="src/video/video_reset_release.v" type="file.verilog" enable="1" />
+    <File path="src/serial_mul32.v" type="file.verilog" enable="1" />
+    <File path="src/auto_motion.v" type="file.verilog" enable="1" />
+    <File path="src/remote_command.v" type="file.verilog" enable="1" />
+    <File path="src/remote_telemetry.v" type="file.verilog" enable="1" />
+    <File path="src/imu660ra_i2c_master.v" type="file.verilog" enable="1" />
+    <File path="src/imu660ra_i2c.v" type="file.verilog" enable="1" />
+    <File path="src/imu660ra_config_rom.v" type="file.verilog" enable="1" />
+    <File path="src/imu660ra_config.hex" type="file.data" enable="1" />
+    <File path="src/heading_pid.v" type="file.verilog" enable="1" />
+    <File path="src/wheel_telemetry.v" type="file.verilog" enable="1" />
+    <File path="src/signed_decimal.v" type="file.verilog" enable="1" />
+    <File path="src/firewater_uart.v" type="file.verilog" enable="1" />
+    <File path="src/mecanum_mixer.v" type="file.verilog" enable="1" />
+    <File path="src/control_tick.v" type="file.verilog" enable="1" />
+    <File path="src/cordic_sincos.v" type="file.verilog" enable="1" />
+    <File path="src/font5x7.v" type="file.verilog" enable="1" />
+    <File path="src/i2c_write3.v" type="file.verilog" enable="1" />
+    <File path="src/mecanum_inverse.v" type="file.verilog" enable="1" />
+    <File path="src/mecanum_odometry.v" type="file.verilog" enable="1" />
+    <File path="src/menu_keys.v" type="file.verilog" enable="1" />
+    <File path="src/navbot_menu.v" type="file.verilog" enable="1" />
+    <File path="src/navbot_motion_core.v" type="file.verilog" enable="1" />
+    <File path="src/navbot_top.v" type="file.verilog" enable="1" />
+    <File path="src/oled_ssd1306.v" type="file.verilog" enable="1" />
+    <File path="src/oled_text_screen.v" type="file.verilog" enable="1" />
+    <File path="src/quadrature_encoder.v" type="file.verilog" enable="1" />
+    <File path="src/servo_pwm.v" type="file.verilog" enable="1" />
+    <File path="src/tb6612_motor.v" type="file.verilog" enable="1" />
+    <File path="src/uart_8n1.v" type="file.verilog" enable="1" />
+    <File path="src/uart_debug_channel.v" type="file.verilog" enable="1" />
+    <File path="src/unsigned_divider32.v" type="file.verilog" enable="1" />
+    <File path="src/wheel_pi.v" type="file.verilog" enable="1" />
+    <File path="src/wheel_pi_bank.v" type="file.verilog" enable="1" />
+    <File path="src/wheel_targets.v" type="file.verilog" enable="1" />
+    <File path="src/video/TMDS_PLL/TMDS_PLL.v" type="file.verilog" enable="1" />
+    <File path="src/video/bayer_to_rgb/bayer_rgb.v" type="file.verilog" enable="1" />
+    <File path="src/video/bayer_to_rgb/ram_line.v" type="file.verilog" enable="1" />
+    <File path="src/video/bayer_to_rgb/shift_line.v" type="file.verilog" enable="1" />
+    <File path="src/video/bayer_to_rgb/video_format_detect.v" type="file.verilog" enable="1" />
+    <File path="src/video/camera_init/camera_init.v" type="file.verilog" enable="1" />
+    <File path="src/video/camera_init/i2c_control/i2c_bit_shift.v" type="file.verilog" enable="1" />
+    <File path="src/video/camera_init/i2c_control/i2c_control.v" type="file.verilog" enable="1" />
+    <File path="src/video/camera_init/ov5647_init_table.v" type="file.verilog" enable="1" />
+    <File path="src/video/ddr3_memory_interface/ddr3_memory_interface.v" type="file.verilog" enable="1" />
+    <File path="src/video/ddr_pll/ddr_pll.v" type="file.verilog" enable="1" />
+    <File path="src/video/dvi_tx/dvi_tx.v" type="file.verilog" enable="1" />
+    <File path="src/video/gowin_mipi_dphy/gowin_mipi_dphy.v" type="file.verilog" enable="1" />
+    <File path="src/video/gowin_pll/gowin_pll.v" type="file.verilog" enable="1" />
+    <File path="src/video/gowin_pll/gowin_pll_mod.v" type="file.verilog" enable="1" />
+    <File path="src/video/mipi_byte_to_pixel_converter/mipi_byte_to_pixel_converter.v" type="file.verilog" enable="1" />
+    <File path="src/video/mipi_dsi_csi2_rx/mipi_dsi_csi2_rx.v" type="file.verilog" enable="1" />
+    <File path="src/video/mipi_ov5647_hdmi.v" type="file.verilog" enable="1" />
+    <File path="src/video/mipi_pixel_to_byte_converter/mipi_pixel_to_byte_converter.v" type="file.verilog" enable="1" />
+    <File path="src/video/ov5647_init/I2C_Interface.v" type="file.verilog" enable="1" />
+    <File path="src/video/ov5647_init/OV5647_Controller.v" type="file.verilog" enable="1" />
+    <File path="src/video/ov5647_init/OV5647_Registers.v" type="file.verilog" enable="1" />
+    <File path="src/video/pix5_pll/pix5_pll.v" type="file.verilog" enable="1" />
+    <File path="src/video/pll_init.v" type="file.verilog" enable="1" />
+    <File path="src/video/syn_gen.v" type="file.verilog" enable="1" />
+    <File path="src/video/video_frame_buffer/video_frame_buffer.v" type="file.verilog" enable="1" />
+    <File path="src/video/yaw_overlay.v" type="file.verilog" enable="1" />
+    <File path="src/video/navbot_camera_top.v" type="file.verilog" enable="1" />
+    <File path="constraints/navbot_camera.cst" type="file.cst" enable="1" />
+    <File path="constraints/navbot_camera.sdc" type="file.sdc" enable="1" />
+  </FileList>
+</Project>

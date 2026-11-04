@@ -22,7 +22,7 @@ def qr_scan(frame, detector=None):
     return int(center[0]), int(center[1]), int(text)
 
 
-def run(camera=0, port="/dev/ttyUSB0", baudrate=115200, stdout_serial=False):
+def run(camera=0, port="COM3", baudrate=115200, stdout_serial=False):
     serial_port = None
     if not stdout_serial:
         import serial
@@ -56,5 +56,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--stdout-serial", action="store_true")
     parser.add_argument("--camera", type=int, default=0)
+    parser.add_argument("--port", default="COM3")
+    parser.add_argument("--baudrate", type=int, default=115200)
     args = parser.parse_args()
-    run(camera=args.camera, stdout_serial=args.stdout_serial)
+    run(camera=args.camera, port=args.port, baudrate=args.baudrate,
+        stdout_serial=args.stdout_serial)

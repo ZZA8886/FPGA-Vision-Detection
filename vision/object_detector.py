@@ -1,11 +1,12 @@
-import cv2
+import argparse
 import json
-import numpy as np
-import onnxruntime as ort
-import sys
 import time
 from pathlib import Path
-from serial_transport import SerialComm
+
+import cv2
+import numpy as np
+import onnxruntime as ort
+
 
 CLASSES = ["0", "1"]  # 类别映射
 
@@ -18,12 +19,15 @@ class StdoutSerialComm:
 
 
 class ObjectDetector:
-    def __init__(self, model_path, comm=None):
-        self.session = ort.InferenceSession(model_path, providers=['CPUExecutionProvider'])
+    def __init__(self, model_path, comm=None, port="COM3", baudrate=115200):
+        self.session = ort.InferenceSession(str(model_path), providers=['CPUExecutionProvider'])
         self.input_size = (320, 320)
         self.fps_time = time.time()
         self.fps = 0.0
-        self.comm = comm if comm is not None else SerialComm(port='/dev/ttyUSB0', baudrate=115200)
+        if comm is None:
+            from serial_comm import SerialComm
+            comm = SerialComm(port, baudrate)
+        self.comm = comm
 
     def detect(self, img):
         # 预处理（合并缩放、填充、归一化）
@@ -88,10 +92,21 @@ class ObjectDetector:
 
 
 if __name__ == '__main__':
-    comm = StdoutSerialComm() if "--stdout-serial" in sys.argv[1:] else None
-    detector = ObjectDetector(str(Path(__file__).resolve().parent / "e.onnx"), comm=comm)
-    # 摄像头配置
-    cap = cv2.VideoCapture(0)
+    parser = argparse.ArgumentParser(description="Run ONNX object tracking for navbot.")
+    parser.add_argument("--model", type=Path, default=Path(__file__).parent / "models" / "e.onnx")
+    parser.add_argument("--camera", type=int, default=0)
+    parser.add_argument("--port", default="COM3")
+    parser.add_argument("--baudrate", type=int, default=115200)
+    parser.add_argument("--stdout-serial", action="store_true")
+    args = parser.parse_args()
+
+    if args.stdout_serial:
+        comm = StdoutSerialComm()
+    else:
+        from serial_comm import SerialComm
+        comm = SerialComm(args.port, args.baudrate)
+    detector = ObjectDetector(args.model, comm=comm)
+    cap = cv2.VideoCapture(args.camera)
     cap.set(6, cv2.VideoWriter.fourcc('M', 'J', 'P', 'G'))
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
